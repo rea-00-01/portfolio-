@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+@theme {
+  /* ---- Color Palette (from user's chosen palette) ---- */
+  --color-ivory: #E1DAD3;
+  --color-nude: #E4C9B6;
+  --color-dustyrose: #D7A49A;
+  --color-sage: #A8AF8C;
+  --color-babyblue: #A4B1BA;
+  --color-ink: #2B2620;       /* near-black for text, warmer than pure black */
+  --color-ink-soft: #55503F;  /* softer secondary text */
+
+  /* ---- Typography ---- */
+  --font-display: "Fraunces", serif;
+  --font-body: "Inter", sans-serif;
+
+  /* ---- Radii (soft, rounded — matches illustrated style) ---- */
+  --radius-card: 1.25rem;
+}
+
+/* Custom cat-paw cursor (placeholder path — real asset added in Phase 2) */
+body {
+  cursor: default;
+  background-color: var(--color-ivory);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+}
+
+/* Fixed nav is ~72px tall — offset scroll targets so section headings
+   don't end up hidden underneath it when navigated to via anchor links. */
+section[id] {
+  scroll-margin-top: 5rem;
+}
+
+/* Custom cat-paw cursor replaces the default pointer on desktop.
+   Left alone on touch devices, which have no cursor anyway. */
+@media (min-width: 768px) {
+  body, a, button {
+    cursor: none;
+  }
+}
+
+/* Hide scrollbar but keep scroll functionality */
+.overflow-x-auto {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;      /* Firefox */
+}
+
+.overflow-x-auto::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari and Opera */
+}
+
+/* Respect reduced-motion preference site-wide */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
